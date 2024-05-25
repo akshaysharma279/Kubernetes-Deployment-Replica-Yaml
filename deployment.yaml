@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: akki-deployment 
+spec: 
+  replicas: 2
+  selector: 
+    matchExpressions: 	
+    - key: app
+      operator: In
+      values:
+      - profile
+  strategy: 
+    type:   
+  template:
+    metadata:
+      labels: 
+        app: profile  
+      name: profile-pod  
+    spec: 
+      containers:
+      - image: devopsinsiders/profile:v1
+        name: akkicontainername
+        ports: 
+        - containerPort: 80
+        resources: 
+          limits:
+            memory: "128Mi"
+            cpu: "500"       

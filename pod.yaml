@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: akkipods
+spec:
+  containers:
+  - image: devopsinsiders/netflix-clone
+    name: akkicontainername
+    ports: 
+    - containerPort: 80
+    resources: 
+      limits:
+        memory: "128Mi"
+        cpu: "500m"

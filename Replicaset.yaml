@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: akkireplica
+spec: 
+  replicas: 3
+  selector: 
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - profile
+  template:
+     metadata:
+       labels:
+          app: profile
+     spec:  
+        containers:
+        - image: devopsinsiders/netflix-clone    
+          name: netflix1 
+          ports:
+          - containerPort: 80
+          resources: 
+            limits: 
+                 memory: "128Mi"
+                 cpu: "500m"
